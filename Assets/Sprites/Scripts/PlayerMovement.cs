@@ -1,0 +1,116 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))] //This attachs the rigidbody component of the object to the script. So if the script is deleted and re-added it will bring along the Rigidbody2D component along with it.
+[RequireComponent(typeof(Animator))]
+
+public class PlayerMovement : MonoBehaviour
+{
+    //public Rigidbody2D rb; //bad programming practice
+    Rigidbody2D rb;
+    Animator anim;
+
+    public float speed; //will be multiplied by movement vector
+    public int jumpForce;
+    public bool isGrounded;
+    public bool isFiring;
+    public bool isCape;
+    public LayerMask isGroundLayer;
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public Vector3 initialScale;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        initialScale = transform.localScale;
+        
+        Debug.Log(rb);
+        rb = GetComponent<Rigidbody2D>(); //default function that retreaves the rigidbody's status
+        Debug.Log(rb);
+        anim = GetComponent<Animator>();
+
+        
+
+        //Establishing some checks
+        if (speed <= 0)
+        {
+            speed = 5.0f; //all float values need to end with 'f' as all decimal values are doubles
+        }
+
+        if ( jumpForce <= 0)
+        {
+            jumpForce = 300;
+        }
+
+        if (groundCheckRadius <=0)
+        {
+            groundCheckRadius = 0.0f;
+        }
+
+        if (!groundCheck) //if groundCheck does not exist
+        {
+            Debug.Log("Groundcheck does not exist, set a transform value");
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float horizontalInput = Input.GetAxisRaw("Horizontal"); //diff b/w GetAxis and GetAxisRaw is that Raw changes the gravity of the button press to an integer change rather than an float change
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer); //setting up a circle below the player and setting the readius of this circle
+
+        //Debug.Log(horizontalInput);
+
+        //transform.Translate(new Vector3(hValue, 0.0f, 0.0f)); //Do not use this for generic movement. Cna be used for specific movement that does not have complex collision and requires player input
+
+
+        if (Input.GetButtonDown ("Jump") && isGrounded) //when we press the jump button and wplayer is on ground
+        {
+            Debug.Log("Space Pressed");
+
+            rb.velocity = Vector2.zero; //setting the value of velocity of zero. Running and jumping will be different to idle jump
+            rb.AddForce(Vector2.up * jumpForce); //adds a force on the z-axis. THis only adds the jump but doesn't tale away the jump
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Cntl Pressed");
+            isFiring = true;
+        }
+        else if (Input.GetButtonUp("Fire1"))
+        {
+            Debug.Log("Cntl Released");
+            isFiring = false;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.Space))
+        {
+            isCape = true;
+        }
+        else
+        {
+            isCape = false;
+        }
+
+        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y); //unit vector +1 and -1. on the y, velocity will stay the same
+        anim.SetFloat("Speed", Mathf.Abs(horizontalInput)); //absolute value of to negate negative values
+        anim.SetBool("isGrounded", isGrounded); //if isGrounded is true we can jump
+        anim.SetBool("isFiring", isFiring); //if isFiring is true we attack
+        anim.SetBool("isCape", isCape); //if isCape is true we use cape to land safely
+
+
+
+    }
+}
