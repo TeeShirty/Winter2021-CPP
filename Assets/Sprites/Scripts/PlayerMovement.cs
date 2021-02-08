@@ -4,14 +4,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))] //This attachs the rigidbody component of the object to the script. So if the script is deleted and re-added it will bring along the Rigidbody2D component along with it.
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
 
 public class PlayerMovement : MonoBehaviour
 {
     //public Rigidbody2D rb; //bad programming practice
     Rigidbody2D rb;
     Animator anim;
-    SpriteRenderer marioSprite;
 
     public float speed; //will be multiplied by movement vector
     public int jumpForce;
@@ -21,18 +19,17 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask isGroundLayer;
     public Transform groundCheck;
     public float groundCheckRadius;
-    //public Vector3 initialScale;
+    public Vector3 initialScale;
 
     // Start is called before the first frame update
     void Start()
     {
-        //initialScale = transform.localScale;
+        initialScale = transform.localScale;
         
         Debug.Log(rb);
         rb = GetComponent<Rigidbody2D>(); //default function that retreaves the rigidbody's status
         Debug.Log(rb);
         anim = GetComponent<Animator>();
-        marioSprite = GetComponent<SpriteRenderer>();
 
         
 
@@ -44,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
         if ( jumpForce <= 0)
         {
-            jumpForce = 100;
+            jumpForce = 300;
         }
 
         if (groundCheckRadius <=0)
@@ -63,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal"); //diff b/w GetAxis and GetAxisRaw is that Raw changes the gravity of the button press to an integer change rather than an float change
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer); //setting up a circle below the player and setting the readius of this circle
-        Debug.Log(isGrounded);
+
         //Debug.Log(horizontalInput);
 
         //transform.Translate(new Vector3(hValue, 0.0f, 0.0f)); //Do not use this for generic movement. Cna be used for specific movement that does not have complex collision and requires player input
@@ -71,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown ("Jump") && isGrounded) //when we press the jump button and wplayer is on ground
         {
-            //Debug.Log("Space Pressed");
+            Debug.Log("Space Pressed");
 
             rb.velocity = Vector2.zero; //setting the value of velocity of zero. Running and jumping will be different to idle jump
             rb.AddForce(Vector2.up * jumpForce); //adds a force on the z-axis. THis only adds the jump but doesn't tale away the jump
@@ -79,24 +76,24 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            //Debug.Log("Cntl Pressed");
+            Debug.Log("Cntl Pressed");
             isFiring = true;
         }
         else if (Input.GetButtonUp("Fire1"))
         {
-            //Debug.Log("Cntl Released");
+            Debug.Log("Cntl Released");
             isFiring = false;
         }
 
-        //if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
-        //}
-        //
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //    transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
-        //}
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+        }
 
         if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.Space))
         {
@@ -113,18 +110,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isFiring", isFiring); //if isFiring is true we attack
         anim.SetBool("isCape", isCape); //if isCape is true we use cape to land safely
 
-        if (!marioSprite.flipX && horizontalInput < 0 || marioSprite.flipX && horizontalInput > 0)
-        {
-            marioSprite.flipX = !marioSprite.flipX;
-        }
 
 
-    }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Powerup")
-        {
-            Destroy(collision.gameObject);
-        }
     }
 }
