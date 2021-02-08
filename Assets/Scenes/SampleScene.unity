@@ -306,18 +306,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7357478163271582864, guid: b47e60d86397fa541b2b1e7e5813eb18, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0576
-      objectReference: {fileID: 0}
-    - target: {fileID: 7357478163271582864, guid: b47e60d86397fa541b2b1e7e5813eb18, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0576
-      objectReference: {fileID: 0}
-    - target: {fileID: 7357478163271582864, guid: b47e60d86397fa541b2b1e7e5813eb18, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0576
-      objectReference: {fileID: 0}
-    - target: {fileID: 7357478163271582864, guid: b47e60d86397fa541b2b1e7e5813eb18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.9706
       objectReference: {fileID: 0}
@@ -360,10 +348,6 @@ PrefabInstance:
     - target: {fileID: 7357478163271582869, guid: b47e60d86397fa541b2b1e7e5813eb18, type: 3}
       propertyPath: m_Name
       value: Level_Powerup2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7357478163271582869, guid: b47e60d86397fa541b2b1e7e5813eb18, type: 3}
-      propertyPath: m_TagString
-      value: Powerup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b47e60d86397fa541b2b1e7e5813eb18, type: 3}
@@ -563,11 +547,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2134594762 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 552924663, guid: b64c84576eb32004aa7de348d25e8a4a, type: 3}
-  m_PrefabInstance: {fileID: 4772386414023840838}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4772386414023840838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -575,21 +554,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1667873700, guid: b64c84576eb32004aa7de348d25e8a4a, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 2134594762}
-    - target: {fileID: 1667873700, guid: b64c84576eb32004aa7de348d25e8a4a, type: 3}
-      propertyPath: groundCheckRadius
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4772386415615094745, guid: b64c84576eb32004aa7de348d25e8a4a, type: 3}
       propertyPath: m_Name
       value: Mario_Run1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772386415615094745, guid: b64c84576eb32004aa7de348d25e8a4a, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4772386415615094756, guid: b64c84576eb32004aa7de348d25e8a4a, type: 3}
       propertyPath: m_RootOrder
