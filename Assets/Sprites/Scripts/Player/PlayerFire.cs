@@ -27,7 +27,7 @@ public class PlayerFire : MonoBehaviour
 
         if (!spawnPointLeft || !spawnPointRight || !projectilesPrefab)
         {
-            Debug.Log("Unity inspector value not set");
+            Debug.Log("Unity inspector value is not set");
         }
     }
 
