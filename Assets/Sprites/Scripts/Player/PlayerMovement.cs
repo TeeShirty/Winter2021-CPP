@@ -23,14 +23,54 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckRadius;
     //public Vector3 initialScale;
 
+    int _score = 0; // protects the actual score value that is in the player
+    public int score
+    {
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+            Debug.Log("Current score is " + _score);
+        }
+    }
+
+    public int maxLives = 3;
+    int _lives = 3;
+
+    public int lives
+    {
+        get
+        {
+            return _lives;
+        }
+        set
+        {
+            _lives = value;                          //check both lives gained and lost together
+            if (_lives > maxLives)
+            {
+                _lives = maxLives;
+            }
+            else if (_lives < 0)
+            {
+                //game over code
+            }
+
+            Debug.Log("Current lives are " + _lives);
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         //initialScale = transform.localScale;
         
-        Debug.Log(rb);
+        //Debug.Log(rb);
         rb = GetComponent<Rigidbody2D>(); //default function that retreaves the rigidbody's status
-        Debug.Log(rb);
+        //Debug.Log(rb);
         anim = GetComponent<Animator>();
         marioSprite = GetComponent<SpriteRenderer>();
 
@@ -63,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal"); //diff b/w GetAxis and GetAxisRaw is that Raw changes the gravity of the button press to an integer change rather than an float change
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer); //setting up a circle below the player and setting the readius of this circle
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         //Debug.Log(horizontalInput);
 
         //transform.Translate(new Vector3(hValue, 0.0f, 0.0f)); //Do not use this for generic movement. Cna be used for specific movement that does not have complex collision and requires player input
@@ -120,11 +160,33 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
-    void OnCollisionEnter2D(Collision2D collision)
+
+    public void StartJumpforceChange()
+    {
+        StartCoroutine(JumpforceChange());
+    }
+
+    IEnumerator JumpforceChange()
+    {
+        jumpForce = 500;
+        yield return new WaitForSeconds(2.0f);
+        jumpForce = 300;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Powerup")
         {
-            Destroy(collision.gameObject);
+            Pickups curPickup = collision.GetComponent<Pickups>();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                switch (curPickup.currentCollectible)
+                {
+                    case Pickups.CollectibleType.KEY:
+                        Destroy(collision.gameObject);
+                        break;
+                }
+            }
         }
     }
 }

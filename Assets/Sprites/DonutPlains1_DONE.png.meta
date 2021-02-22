@@ -10,7 +10,7 @@ TextureImporter:
     second: Level_Collectible1
   - first:
       213: -6223913005026926526
-    second: Level_Collectible2
+    second: Level_Collectible
   - first:
       213: -8251548219702976207
     second: DonutPlains1_DONE_3
@@ -37,7 +37,7 @@ TextureImporter:
     second: Level_Powerup2
   - first:
       213: -6150482773385901676
-    second: Level_Collectible3
+    second: Pickup_Key
   - first:
       213: -6400644745172546573
     second: Level_Powerup1
@@ -178,13 +178,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level_Collectible2
+      name: Level_Collectible
       rect:
         serializedVersion: 2
-        x: 61
-        y: 136
-        width: 15
-        height: 23
+        x: 64
+        y: 139
+        width: 8
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -349,10 +349,10 @@ TextureImporter:
       name: Level_Powerup2
       rect:
         serializedVersion: 2
-        x: 238
-        y: 114
-        width: 23
-        height: 22
+        x: 242
+        y: 117
+        width: 14
+        height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,13 +367,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level_Collectible3
+      name: Pickup_Key
       rect:
         serializedVersion: 2
-        x: 281
-        y: 99
-        width: 22
-        height: 22
+        x: 284
+        y: 103
+        width: 16
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,10 +391,10 @@ TextureImporter:
       name: Level_Powerup1
       rect:
         serializedVersion: 2
-        x: 238
-        y: 81
-        width: 23
-        height: 23
+        x: 242
+        y: 85
+        width: 14
+        height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -14,7 +14,7 @@ public class Projectiles : MonoBehaviour
     {
         if (lifetime <= 0)
         {
-            lifetime = 4.0f;
+            lifetime = 2.0f;
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);  // setting velocity just one time when we start the object
@@ -29,7 +29,7 @@ public class Projectiles : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Powerup")
+        if (collision.gameObject.tag != "Player")
         {
             Destroy(gameObject);
         }
