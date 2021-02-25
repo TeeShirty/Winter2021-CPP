@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Powerup")
         {
             Pickups curPickup = collision.GetComponent<Pickups>();
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
                 switch (curPickup.currentCollectible)
                 {
