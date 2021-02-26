@@ -152,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded); //if isGrounded is true we can jump
         anim.SetBool("isFiring", isFiring); //if isFiring is true we attack
         anim.SetBool("isCape", isCape); //if isCape is true we use cape to land safely
-
+    
         if (!marioSprite.flipX && horizontalInput < 0 || marioSprite.flipX && horizontalInput > 0)
         {
             marioSprite.flipX = !marioSprite.flipX;

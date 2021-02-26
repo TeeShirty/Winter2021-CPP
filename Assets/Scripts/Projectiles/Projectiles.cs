@@ -29,9 +29,15 @@ public class Projectiles : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag != "Player")
+        if (collision.gameObject)
         {
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Squished")
+        {
+            collision.gameObject.GetComponent<EnemyWalker>().isDead();
+            Destroy(gameObject); //destroys projectile
         }
     }
 

@@ -1117,31 +1117,31 @@ TextureImporter:
     second: Sprite_Enemies_370
   - first:
       213: -8867517488704175340
-    second: Sprite_Enemies_371
+    second: Turret_idle1
   - first:
       213: 6637551108898550329
-    second: Sprite_Enemies_372
+    second: Turret_idle2
   - first:
       213: -6136831253710981457
-    second: Sprite_Enemies_373
+    second: Turret_idle3
   - first:
       213: 7257571379836735927
-    second: Sprite_Enemies_374
+    second: Turret_idle4
   - first:
       213: 4167566630145154479
-    second: Enemy_TurretAtk2
+    second: Turret_Throw5
   - first:
       213: 6884296285647106564
-    second: Enemy_TurretAtk3
+    second: Turret_Throw6
   - first:
       213: 6447869040204464832
-    second: Enemy_TurretAtk4
+    second: Turret_Throw7
   - first:
       213: -1916225584067887003
-    second: Sprite_Enemies_378
+    second: Turret_Throw8
   - first:
       213: -7017242028456780310
-    second: Sprite_Enemies_379
+    second: Turret_Throw9
   - first:
       213: 3582905062180159172
     second: Sprite_Enemies_380
@@ -1294,25 +1294,25 @@ TextureImporter:
     second: Sprite_Enemies_429
   - first:
       213: -2377237786465301537
-    second: Sprite_Enemies_430
+    second: Turret_Throw1
   - first:
       213: -6426917726086614663
-    second: Sprite_Enemies_431
+    second: Turret_Throw2
   - first:
       213: -1412917830863510514
-    second: Sprite_Enemies_432
+    second: Turret_Throw3
   - first:
       213: -6737833500471518676
-    second: Enemy_TurretAtk1
+    second: Turret_Throw4
   - first:
       213: 2816963842537049648
-    second: Sprite_Enemies_434
+    second: Turret_Throw10
   - first:
       213: 6406659242056961451
-    second: Sprite_Enemies_435
+    second: Turret_Throw11
   - first:
       213: 6791402268195603443
-    second: Sprite_Enemies_436
+    second: Turret_Throw12
   - first:
       213: 8231723984923347343
     second: Enemy_TurretAtk5
@@ -1756,10 +1756,10 @@ TextureImporter:
     second: Sprite_Enemies_583
   - first:
       213: -2067622908447794409
-    second: Sprite_Enemies_584
+    second: Enemy2_Walk1
   - first:
       213: 6609354866631428532
-    second: Sprite_Enemies_585
+    second: Enemy2_Walk2
   - first:
       213: -7860885151687055220
     second: Sprite_Enemies_586
@@ -1789,7 +1789,7 @@ TextureImporter:
     second: Sprite_Enemies_594
   - first:
       213: -5759239383780686529
-    second: Sprite_Enemies_595
+    second: Enemy2_Die1
   - first:
       213: -1141617996193593359
     second: Sprite_Enemies_596
@@ -1870,7 +1870,7 @@ TextureImporter:
     second: Sprite_Enemies_621
   - first:
       213: 576202540205932576
-    second: Sprite_Enemies_622
+    second: Enemy2_Die2
   - first:
       213: -1542750872786026841
     second: Sprite_Enemies_623
@@ -2093,7 +2093,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -2107,7 +2107,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -9943,7 +9943,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_371
+      name: Turret_idle1
       rect:
         serializedVersion: 2
         x: 4
@@ -9964,7 +9964,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_372
+      name: Turret_idle2
       rect:
         serializedVersion: 2
         x: 35
@@ -9985,7 +9985,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_373
+      name: Turret_idle3
       rect:
         serializedVersion: 2
         x: 64
@@ -10006,7 +10006,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_374
+      name: Turret_idle4
       rect:
         serializedVersion: 2
         x: 93
@@ -10027,7 +10027,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_TurretAtk2
+      name: Turret_Throw5
       rect:
         serializedVersion: 2
         x: 128
@@ -10048,7 +10048,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_TurretAtk3
+      name: Turret_Throw6
       rect:
         serializedVersion: 2
         x: 158
@@ -10069,7 +10069,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_TurretAtk4
+      name: Turret_Throw7
       rect:
         serializedVersion: 2
         x: 188
@@ -10090,7 +10090,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_378
+      name: Turret_Throw8
       rect:
         serializedVersion: 2
         x: 218
@@ -10111,7 +10111,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_379
+      name: Turret_Throw9
       rect:
         serializedVersion: 2
         x: 245
@@ -11182,7 +11182,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_430
+      name: Turret_Throw1
       rect:
         serializedVersion: 2
         x: 2
@@ -11203,7 +11203,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_431
+      name: Turret_Throw2
       rect:
         serializedVersion: 2
         x: 30
@@ -11224,7 +11224,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_432
+      name: Turret_Throw3
       rect:
         serializedVersion: 2
         x: 60
@@ -11245,7 +11245,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_TurretAtk1
+      name: Turret_Throw4
       rect:
         serializedVersion: 2
         x: 91
@@ -11266,7 +11266,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_434
+      name: Turret_Throw10
       rect:
         serializedVersion: 2
         x: 130
@@ -11287,7 +11287,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_435
+      name: Turret_Throw11
       rect:
         serializedVersion: 2
         x: 158
@@ -11308,7 +11308,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_436
+      name: Turret_Throw12
       rect:
         serializedVersion: 2
         x: 187
@@ -14416,7 +14416,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_584
+      name: Enemy2_Walk1
       rect:
         serializedVersion: 2
         x: 28
@@ -14437,7 +14437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_585
+      name: Enemy2_Walk2
       rect:
         serializedVersion: 2
         x: 47
@@ -14647,7 +14647,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_595
+      name: Enemy2_Die1
       rect:
         serializedVersion: 2
         x: 250
@@ -15214,7 +15214,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_622
+      name: Enemy2_Die2
       rect:
         serializedVersion: 2
         x: 250

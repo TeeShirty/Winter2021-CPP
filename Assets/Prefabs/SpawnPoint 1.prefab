@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPickups:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7826461138561502213, guid: ee36934047bb4d4448c1e2e842f73a62, type: 3}
+  - {fileID: 3132985318120760074, guid: b4bed7f5993627b488b20df74b641bb4, type: 3}
+  - {fileID: 8955782080727162570, guid: 8e88c470022dd604f87f210575729f26, type: 3}
+  - {fileID: 8317689103958272576, guid: a99e9d0d7c4b8cb4ea270e570e864236, type: 3}

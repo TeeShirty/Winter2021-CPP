@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Powerup
+  - Squished
+  - Enemy
+  - Barrier
+  - TurretProjectile
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
@@ -12,8 +17,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - EnemyProjectiles
+  - Enemies
   - 
   - 
   - 
