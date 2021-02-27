@@ -8,6 +8,7 @@ using UnityEngine;
 public class EnemyTurret : MonoBehaviour
 {
     public GameObject target;
+   
 
     public Transform projectileSpawnPointLeft;
     public Transform projectileSpawnPointRight;
@@ -47,23 +48,31 @@ public class EnemyTurret : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
-       
-
-        //Delay timer between turret attacks
-        if (Time.time >= timeSinceLastFire + projectileFireRate)
+    { 
+        //turret aggro range
+        
+        if (Vector2.Distance(target.transform.position, turretSprite.transform.position) <= 5)
         {
             anim.SetBool("Fire", true);
-            timeSinceLastFire = Time.time;   
-        }
-
-        if (target == true)
-        {
-            if (!turretSprite.flipX && target.transform.position.x <= transform.position.x || turretSprite.flipX && target.transform.position.x >= transform.position.x)
+            //turret follows direction of player
+            if (target == true)
             {
-                turretSprite.flipX = !turretSprite.flipX;
+                if (!turretSprite.flipX && target.transform.position.x <= transform.position.x || turretSprite.flipX && target.transform.position.x >= transform.position.x)
+                {
+                    turretSprite.flipX = !turretSprite.flipX;
+                }
             }
+
+            //Delay timer between turret attacks
+            if (Time.time >= timeSinceLastFire + projectileFireRate)
+            {
+                anim.SetBool("Fire", true);
+                timeSinceLastFire = Time.time;
+            }
+        }
+        else
+        {
+            anim.SetBool("Fire", false);
         }
 
     }
