@@ -15,6 +15,7 @@ public class EnemyTurret : MonoBehaviour
     public Projectiles projectilePrefab;
 
     public float projectileForce;
+    public float aggroDistance;
 
     public float projectileFireRate;
     float timeSinceLastFire = 0.0f;
@@ -51,13 +52,13 @@ public class EnemyTurret : MonoBehaviour
     { 
         //turret aggro range
         
-        if (Vector2.Distance(target.transform.position, turretSprite.transform.position) <= 5)
+        if (Vector2.Distance(GameManager.instance.playerInstance.transform.position, turretSprite.transform.position) <= aggroDistance)
         {
             anim.SetBool("Fire", true);
             //turret follows direction of player
             if (target == true)
             {
-                if (!turretSprite.flipX && target.transform.position.x <= transform.position.x || turretSprite.flipX && target.transform.position.x >= transform.position.x)
+                if (!turretSprite.flipX && GameManager.instance.playerInstance.transform.position.x <= transform.position.x || turretSprite.flipX && GameManager.instance.playerInstance.transform.position.x >= transform.position.x)
                 {
                     turretSprite.flipX = !turretSprite.flipX;
                 }

@@ -31,7 +31,7 @@ public class EnemyWalker : MonoBehaviour
 
         if (health <= 0)
         {
-            health = 3;
+            health = 0;
         }
     }
 

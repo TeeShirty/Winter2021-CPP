@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 390000444}
   - component: {fileID: 390000443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightBarrier
   m_TagString: Barrier
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1556109074}
   - component: {fileID: 1556109073}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftBarrier
   m_TagString: Barrier
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 176250818917006292}
   - component: {fileID: 176250818917006293}
   - component: {fileID: 176250818917006290}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176250818917006288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.84, y: -2.39, z: 10.76}
+  m_LocalPosition: {x: -2.84, y: -2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 176250820441466602}
@@ -290,9 +290,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176250820150456324}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyWalker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 176250820441466602}
   - component: {fileID: 176250820441466605}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SquishCollider
   m_TagString: Squished
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.024951935, y: 0.8576843}

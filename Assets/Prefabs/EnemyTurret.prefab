@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7319045605523489737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 7925722047135012799}
   - component: {fileID: 7925722047135012796}
   - component: {fileID: 7925722047135012800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,9 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a413d2a764494c9cd4e2662f8994d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  projectileSpawnPointLeft: {fileID: 0}
-  projectileSpawnPointRight: {fileID: 0}
+  target: {fileID: 4772386415615094745, guid: b64c84576eb32004aa7de348d25e8a4a, type: 3}
+  projectileSpawnPointLeft: {fileID: 7319045605523489737}
+  projectileSpawnPointRight: {fileID: 7925722047203048667}
   projectilePrefab: {fileID: 4945004844335718280, guid: fae7f9f6582631b4e80dda0dc38366ad, type: 3}
   projectileForce: 7
   projectileFireRate: 1.5
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7925722047203048667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

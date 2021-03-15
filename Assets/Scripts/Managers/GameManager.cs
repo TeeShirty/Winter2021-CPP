@@ -34,23 +34,29 @@ public class GameManager : MonoBehaviour
             if (_lives > value)
             {
                 //respawn code goes here
-                //Destroy player;
+                
+                Respawn();
             }
             _lives = value;
             if (_lives > maxLives)
             {
                 _lives = maxLives;
             }
-            else if (_lives < 0)
+            else if (_lives <= 0)
             {
                 _lives = 0;
                 SceneManager.LoadScene("GameOver");
-                _lives = maxLives;
+                //_lives = maxLives;
                 //insert game end code here
             }
             Debug.Log("Current lives are " + _lives);
         }
     }
+
+    public GameObject playerprefab;
+    public GameObject playerInstance;
+    public LevelManager currentLevel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -87,11 +93,45 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-#if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+            QuitGame();
         }
+    }
+
+    public void spawnPlayer(Transform spawnLocation)
+    {
+        CameraFollow mainCamera = FindObjectOfType<CameraFollow>();
+
+        if (mainCamera)
+        {
+            mainCamera.player = Instantiate(playerprefab, spawnLocation.position, spawnLocation.rotation);
+            playerInstance = mainCamera.player;
+        }
+        else
+        {
+            spawnPlayer(spawnLocation);
+        }
+    }
+    public void Respawn()
+    {
+        playerInstance.transform.position = currentLevel.spawnLocation.position;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Level");
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
+        Application.Quit()
+#endif
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 }
