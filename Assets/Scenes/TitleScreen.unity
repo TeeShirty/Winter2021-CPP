@@ -1164,6 +1164,9 @@ MonoBehaviour:
   livesText: {fileID: 0}
   volumeText: {fileID: 1570937114}
   volumeSlider: {fileID: 1315364680}
+  hearts: []
+  fullheart: {fileID: 0}
+  emptyheart: {fileID: 0}
 --- !u!114 &1526703587
 MonoBehaviour:
   m_ObjectHideFlags: 0

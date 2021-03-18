@@ -91,17 +91,19 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Exit Game
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             QuitGame();
         }
     }
 
+    // Spawns player into game
     public void spawnPlayer(Transform spawnLocation)
     {
         CameraFollow mainCamera = FindObjectOfType<CameraFollow>();
 
-        if (mainCamera)
+        if (mainCamera == true)
         {
             mainCamera.player = Instantiate(playerprefab, spawnLocation.position, spawnLocation.rotation);
             playerInstance = mainCamera.player;

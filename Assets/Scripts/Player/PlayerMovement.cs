@@ -101,64 +101,66 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal"); //diff b/w GetAxis and GetAxisRaw is that Raw changes the gravity of the button press to an integer change rather than an float change
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer); //setting up a circle below the player and setting the readius of this circle
-        //Debug.Log(isGrounded);
-        //Debug.Log(horizontalInput);
-
-        //transform.Translate(new Vector3(hValue, 0.0f, 0.0f)); //Do not use this for generic movement. Cna be used for specific movement that does not have complex collision and requires player input
-
-
-        if (Input.GetButtonDown ("Jump") && isGrounded) //when we press the jump button and wplayer is on ground
+        if (Time.timeScale == 1)
         {
-            //Debug.Log("Space Pressed");
+            float horizontalInput = Input.GetAxisRaw("Horizontal"); //diff b/w GetAxis and GetAxisRaw is that Raw changes the gravity of the button press to an integer change rather than an float change
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer); //setting up a circle below the player and setting the readius of this circle
+                                                                                                          //Debug.Log(isGrounded);
+                                                                                                          //Debug.Log(horizontalInput);
 
-            rb.velocity = Vector2.zero; //setting the value of velocity of zero. Running and jumping will be different to idle jump
-            rb.AddForce(Vector2.up * jumpForce); //adds a force on the z-axis. THis only adds the jump but doesn't tale away the jump
+            //transform.Translate(new Vector3(hValue, 0.0f, 0.0f)); //Do not use this for generic movement. Cna be used for specific movement that does not have complex collision and requires player input
+
+
+            if (Input.GetButtonDown("Jump") && isGrounded) //when we press the jump button and wplayer is on ground
+            {
+                //Debug.Log("Space Pressed");
+
+                rb.velocity = Vector2.zero; //setting the value of velocity of zero. Running and jumping will be different to idle jump
+                rb.AddForce(Vector2.up * jumpForce); //adds a force on the z-axis. THis only adds the jump but doesn't tale away the jump
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                //Debug.Log("Cntl Pressed");
+                isFiring = true;
+            }
+            else if (Input.GetButtonUp("Fire1"))
+            {
+                //Debug.Log("Cntl Released");
+                isFiring = false;
+            }
+
+            //if (Input.GetKey(KeyCode.RightArrow))
+            //{
+            //    transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
+            //}
+            //
+            //if (Input.GetKey(KeyCode.LeftArrow))
+            //{
+            //    transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+            //}
+
+            if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.Space))
+            {
+                isCape = true;
+            }
+            else
+            {
+                isCape = false;
+            }
+
+            rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y); //unit vector +1 and -1. on the y, velocity will stay the same
+            anim.SetFloat("Speed", Mathf.Abs(horizontalInput)); //absolute value of to negate negative values
+            anim.SetBool("isGrounded", isGrounded); //if isGrounded is true we can jump
+            anim.SetBool("isFiring", isFiring); //if isFiring is true we attack
+            anim.SetBool("isCape", isCape); //if isCape is true we use cape to land safely
+
+            if (!marioSprite.flipX && horizontalInput < 0 || marioSprite.flipX && horizontalInput > 0)
+            {
+                marioSprite.flipX = !marioSprite.flipX;
+            }
+
         }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            //Debug.Log("Cntl Pressed");
-            isFiring = true;
-        }
-        else if (Input.GetButtonUp("Fire1"))
-        {
-            //Debug.Log("Cntl Released");
-            isFiring = false;
-        }
-
-        //if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
-        //}
-        //
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //    transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
-        //}
-
-        if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.Space))
-        {
-            isCape = true;
-        }
-        else
-        {
-            isCape = false;
-        }
-
-        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y); //unit vector +1 and -1. on the y, velocity will stay the same
-        anim.SetFloat("Speed", Mathf.Abs(horizontalInput)); //absolute value of to negate negative values
-        anim.SetBool("isGrounded", isGrounded); //if isGrounded is true we can jump
-        anim.SetBool("isFiring", isFiring); //if isFiring is true we attack
-        anim.SetBool("isCape", isCape); //if isCape is true we use cape to land safely
-    
-        if (!marioSprite.flipX && horizontalInput < 0 || marioSprite.flipX && horizontalInput > 0)
-        {
-            marioSprite.flipX = !marioSprite.flipX;
-        }
-
-
     }
 
     public void StartJumpforceChange()

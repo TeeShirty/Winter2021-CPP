@@ -20,6 +20,7 @@ public class EnemyTurret : MonoBehaviour
     public float projectileFireRate;
     float timeSinceLastFire = 0.0f;
     public int health;
+    public HealthHearts heartsHealth;
 
     Animator anim;
     SpriteRenderer turretSprite;
@@ -30,6 +31,7 @@ public class EnemyTurret : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         turretSprite = GetComponent<SpriteRenderer>();
+
         
 
         //Garbage data
@@ -103,7 +105,8 @@ public class EnemyTurret : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            health--;
+            //health--;
+            heartsHealth.numOfHearts--;
             Destroy(collision.gameObject);
             if (health <= 0)
             {

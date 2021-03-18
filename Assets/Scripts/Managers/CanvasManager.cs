@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class CanvasManager : MonoBehaviour
 
     [Header("Slider")]
     public Slider volumeSlider;
+
+    public Image[] hearts;
+    public Sprite fullheart;
+    public Sprite emptyheart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +77,10 @@ public class CanvasManager : MonoBehaviour
                 {
                     pauseMenu.SetActive(true);
                     Time.timeScale = 0f;
+                    if (Time.timeScale == 0f)
+                    {
+                        //insert lock all inputs code here
+                    }
                 }
                 if (pauseMenu == false)
                 {
@@ -93,12 +103,29 @@ public class CanvasManager : MonoBehaviour
                 volumeText.text = volumeSlider.value.ToString();
             }
         }
+
+        if(SceneManager.GetActiveScene().name == "Level") //make sure this happens only in level
+        {
+            for (int j = 0; j < hearts.Length; j++)
+            {
+                if (j < GameManager.instance.lives)
+                {
+                    hearts[j].enabled = true;
+                }
+                else
+                {
+                    hearts[j].enabled = false;
+                }
+                    
+            }
+        }
+
     }
 
     public void ReturnToGame()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
     }
 
     void ShowMainMenu()
@@ -112,4 +139,6 @@ public class CanvasManager : MonoBehaviour
         mainMenu.SetActive(false);
         settingsMenu.SetActive(true);
     }
+
+    
 }
