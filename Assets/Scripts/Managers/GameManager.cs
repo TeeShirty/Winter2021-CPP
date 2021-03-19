@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerprefab;
     public GameObject playerInstance;
     public LevelManager currentLevel;
-
+    bool isHit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +94,13 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene("TitleScreen");
             }
+        }
+
+        if(!onHitSound.isPlaying && isHit)
+        {
+            playerInstance.transform.position = currentLevel.spawnLocation.position;
+            isHit = false;
+            Time.timeScale = 1;
         }
 
         // Exit Game
@@ -131,8 +138,8 @@ public class GameManager : MonoBehaviour
         {
             onHitSound.Play();
         }
-        
-        playerInstance.transform.position = currentLevel.spawnLocation.position;
+        isHit = true;
+        Time.timeScale = 0;
     }
 
     public void StartGame()
