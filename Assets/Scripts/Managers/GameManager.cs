@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    AudioSource onHitSound;
+    public AudioClip onHitSFX;
     static GameManager _instance = null;
     public static GameManager instance
     {
@@ -33,9 +36,11 @@ public class GameManager : MonoBehaviour
         {
             if (_lives > value)
             {
+
                 //respawn code goes here
                 
                 Respawn();
+                Debug.Log("Respawn code here");
             }
             _lives = value;
             if (_lives > maxLives)
@@ -115,6 +120,18 @@ public class GameManager : MonoBehaviour
     }
     public void Respawn()
     {
+        if (!onHitSound)
+        {
+            onHitSound = gameObject.AddComponent<AudioSource>(); // creates a component in the inspector for the life of the jump
+            onHitSound.clip = onHitSFX; // attached the actual sound clip to the variable
+            onHitSound.loop = false; // disables looping
+            onHitSound.Play(); // plays the sound
+        }
+        else
+        {
+            onHitSound.Play();
+        }
+        
         playerInstance.transform.position = currentLevel.spawnLocation.position;
     }
 

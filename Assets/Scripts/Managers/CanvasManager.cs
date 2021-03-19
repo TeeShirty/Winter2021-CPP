@@ -28,12 +28,26 @@ public class CanvasManager : MonoBehaviour
     public Slider volumeSlider;
 
     public Image[] hearts;
-    public Sprite fullheart;
-    public Sprite emptyheart;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    AudioSource pauseAudio;
+    public AudioClip pauseSound;
+
+    AudioSource levelAudio;
+    public AudioClip levelMusic;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Only if the pause menu exists will it call it
+        if(pauseMenu)
+        {
+            pauseAudio = gameObject.AddComponent<AudioSource>();
+            pauseAudio.clip = pauseSound;
+            pauseAudio.loop = false;
+        }
+
         if (startButton == true)
         {
             startButton.onClick.AddListener(() => GameManager.instance.StartGame()); //add listener with specific parameters
@@ -68,29 +82,24 @@ public class CanvasManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pauseMenu)
+        if (pauseMenu)
         {
-          
             if (Input.GetKeyDown(KeyCode.P))
             {
-                if (pauseMenu == true)
-                {
-                    pauseMenu.SetActive(true);
-                    Time.timeScale = 0f;
-                    if (Time.timeScale == 0f)
-                    {
-                        //insert lock all inputs code here
-                    }
-                }
-                if (pauseMenu == false)
-                {
-                    ReturnToGame();
-                }
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
 
-                //pauseMenu.SetActive(!pauseMenu.activeSelf);//set timescale to 0;
-                //Time.timeScale = 0;
+                if (pauseMenu.activeSelf)
+                {
+                    pauseAudio.Play();
+                    Time.timeScale = 0f;
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                }
             }
-        }
+        }    
+    
 
         if (livesText == true)
         {
@@ -104,6 +113,7 @@ public class CanvasManager : MonoBehaviour
             }
         }
 
+        // implementing hearts as lives
         if(SceneManager.GetActiveScene().name == "Level") //make sure this happens only in level
         {
             for (int j = 0; j < hearts.Length; j++)
@@ -111,15 +121,15 @@ public class CanvasManager : MonoBehaviour
                 if (j < GameManager.instance.lives)
                 {
                     hearts[j].enabled = true;
+                    //hearts[j].sprite = fullHeart;
                 }
                 else
                 {
                     hearts[j].enabled = false;
+                   //hearts[j].sprite = emptyHeart;
                 }
-                    
             }
         }
-
     }
 
     public void ReturnToGame()

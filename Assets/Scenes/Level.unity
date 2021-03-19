@@ -272,8 +272,10 @@ MonoBehaviour:
   - {fileID: 502932534}
   - {fileID: 1343646366}
   - {fileID: 1086424836}
-  fullheart: {fileID: -5554242427393827062, guid: 71703cfec33e74341ab3b9b6680374ba, type: 3}
-  emptyheart: {fileID: -768930550507384156, guid: 71703cfec33e74341ab3b9b6680374ba, type: 3}
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
+  pauseSound: {fileID: 8300000, guid: 71812f70211491d419c882d767b7598b, type: 3}
+  levelMusic: {fileID: 8300000, guid: e1d0d2b7bdf3e0f468f0552f09d09c4e, type: 3}
 --- !u!114 &412459122
 MonoBehaviour:
   m_ObjectHideFlags: 0

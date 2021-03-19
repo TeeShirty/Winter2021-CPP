@@ -25,6 +25,7 @@ public class EnemyTurret : MonoBehaviour
     Animator anim;
     SpriteRenderer turretSprite;
    
+   
 
     // Start is called before the first frame update
     void Start()
@@ -105,8 +106,8 @@ public class EnemyTurret : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerProjectile")
         {
-            //health--;
-            heartsHealth.numOfHearts--;
+            health--;
+            //heartsHealth.numOfHearts--;
             Destroy(collision.gameObject);
             if (health <= 0)
             {

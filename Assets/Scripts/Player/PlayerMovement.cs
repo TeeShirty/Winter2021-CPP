@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer marioSprite;
+    AudioSource jumpAudioSource;
 
     public float speed; //will be multiplied by movement vector
     public int jumpForce;
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask isGroundLayer;
     public Transform groundCheck;
     public float groundCheckRadius;
+    public AudioClip jumpSFX;
+ 
     //public Vector3 initialScale;
 
     int _score = 0; // protects the actual score value that is in the player
@@ -73,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(rb);
         anim = GetComponent<Animator>();
         marioSprite = GetComponent<SpriteRenderer>();
+        
 
         
 
@@ -108,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
                                                                                                           //Debug.Log(isGrounded);
                                                                                                           //Debug.Log(horizontalInput);
 
+
             //transform.Translate(new Vector3(hValue, 0.0f, 0.0f)); //Do not use this for generic movement. Cna be used for specific movement that does not have complex collision and requires player input
 
 
@@ -117,6 +122,19 @@ public class PlayerMovement : MonoBehaviour
 
                 rb.velocity = Vector2.zero; //setting the value of velocity of zero. Running and jumping will be different to idle jump
                 rb.AddForce(Vector2.up * jumpForce); //adds a force on the z-axis. THis only adds the jump but doesn't tale away the jump
+                
+                //Audio of jump
+                if (!jumpAudioSource)
+                {
+                    jumpAudioSource = gameObject.AddComponent<AudioSource>(); // creates a component in the inspector for the life of the jump
+                    jumpAudioSource.clip = jumpSFX; // attached the actual sound clip to the variable
+                    jumpAudioSource.loop = false; // disables looping
+                    jumpAudioSource.Play(); // plays the sound
+                }
+                else
+                {
+                    jumpAudioSource.Play(); 
+                }
             }
 
             if (Input.GetButtonDown("Fire1"))

@@ -218,6 +218,7 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 552924663}
   groundCheckRadius: 0.1
+  jumpSFX: {fileID: 8300000, guid: af73855554c268d41b4870966eb33062, type: 3}
   maxLives: 3
 --- !u!50 &1667873701
 Rigidbody2D:
@@ -256,6 +257,7 @@ MonoBehaviour:
   spawnPointRight: {fileID: 4229185712560790848}
   projectileSpeed: 0
   projectilesPrefab: {fileID: 1561921711256109935, guid: 30c06ec9215fc9a4e919bf425fef5bf9, type: 3}
+  fireSFX: {fileID: 8300000, guid: 6235066d4f99a4148a2056275eab7480, type: 3}
 --- !u!114 &929156997
 MonoBehaviour:
   m_ObjectHideFlags: 0

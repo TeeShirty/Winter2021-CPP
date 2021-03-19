@@ -36,7 +36,14 @@ public class Projectiles : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Squished")
         {
-            collision.gameObject.GetComponent<EnemyWalker>().isDead();
+            EnemyWalker walkerScript = collision.gameObject.GetComponent<EnemyWalker>();
+            EnemyTurret turretScript = collision.gameObject.GetComponent<EnemyTurret>();
+            
+            if (walkerScript)
+            {
+                walkerScript.isDead();
+            }
+            
             Destroy(gameObject); //destroys projectile
         }
     }
